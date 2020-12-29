@@ -62,7 +62,14 @@ def preprocess(sentence):
     and removing any word that does not contain at least one alphabetic
     character.
     """
-    raise NotImplementedError
+
+    # Lower case the sentence
+    s = sentence.lower()
+
+    # List of words with at least one alphabetic character
+    words = [word for word in nltk.word_tokenize(s) 
+            if any(char.isalpha() for char in word)]
+    return words
 
 
 def np_chunk(tree):
@@ -72,7 +79,7 @@ def np_chunk(tree):
     whose label is "NP" that does not itself contain any other
     noun phrases as subtrees.
     """
-    raise NotImplementedError
+    return []
 
 
 if __name__ == "__main__":
