@@ -15,7 +15,11 @@ V -> "smiled" | "tell" | "were"
 """
 
 NONTERMINALS = """
-S -> N V
+S -> NP VP | VP | S Conj S
+AP -> Adj | Adj AP 
+NP -> N | Det N | Det AP N | AP NP
+PP -> P NP | P NP PP
+VP -> V | V NP | VP NP PP | V PP | Adv VP | VP Adv
 """
 
 grammar = nltk.CFG.fromstring(NONTERMINALS + TERMINALS)
